@@ -43,7 +43,7 @@ class DashboardFragment : Fragment() {
             TimePickerDialog(root.context, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
-        btn_save.setOnClickListener {
+        root.btn_done.setOnClickListener {
             var title = et_title.text.toString()
             var time = btn_time.text.toString()
             var days = ArrayList<String>()
@@ -64,7 +64,6 @@ class DashboardFragment : Fragment() {
                 days.add("Sunday")
 
             var task = Task(title, days, time)
-
             HomeFragment.tasks.add(task)
 
             Toast.makeText(root.context, "New task added", Toast.LENGTH_SHORT).show()

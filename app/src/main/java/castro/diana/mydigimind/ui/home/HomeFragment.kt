@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.GridView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import castro.diana.mydigimind.R
 import castro.diana.mydigimind.Task
@@ -41,8 +39,7 @@ class HomeFragment : Fragment() {
         }
 
         adapter = AdapterTasks(root.context, tasks)
-        val gridView: GridView = root.findViewById(R.id.gridView)
-        gridView.adapter = adapter
+        root.gridView.adapter = adapter
 
         return root
     }
@@ -70,8 +67,8 @@ class HomeFragment : Fragment() {
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             var task = tasks[position]
-            var inflate = LayoutInflater.from(context)
-            var view =  inflate.inflate(R.layout.task_view, null)
+            var inflator = LayoutInflater.from(context)
+            var view =  inflator.inflate(R.layout.task_view, null)
 
             view.tv_title.setText(task.title)
             view.tv_time.setText(task.time)
