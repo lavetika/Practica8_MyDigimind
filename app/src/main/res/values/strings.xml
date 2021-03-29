@@ -7,7 +7,8 @@
     <string name="take_my_pill">Take my pill</string>
     <string name="when_to_do_it">When do you want to do it?</string>
     <string name="at_what_time">At what time?</string>
-    <string name="set_time">DONE</string>
+    <string name="set_time">Set time</string>
+    <string name="reminder_done">DONE</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
