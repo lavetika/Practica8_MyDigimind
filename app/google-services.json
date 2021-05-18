@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1078611802062",
+    "project_id": "mydigimind-6d017",
+    "storage_bucket": "mydigimind-6d017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078611802062:android:ccc22f8ed66eadf8b3dd9f",
+        "android_client_info": {
+          "package_name": "castro.diana.mydigimind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078611802062-0r6pqka45ns0aoonn5sf5ji430cg1ake.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3m8R5FRrEDHoYpWhcRlCyfZhsEtWJhZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078611802062-0r6pqka45ns0aoonn5sf5ji430cg1ake.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
