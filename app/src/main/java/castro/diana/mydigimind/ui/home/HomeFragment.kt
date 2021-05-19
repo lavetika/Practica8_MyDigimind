@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.GridView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import castro.diana.mydigimind.R
@@ -43,37 +44,17 @@ class HomeFragment : Fragment() {
         storage = FirebaseFirestore.getInstance()
         usuario = FirebaseAuth.getInstance()
 
-        if(first){
-            fillTasks()
-            first = false
-        }
+        fillTasks()
 
         if(!tasks.isEmpty()){
             adapter = AdapterTasks(root.context, tasks)
             root.gridView.adapter = adapter
         }
 
-
-
-        /*
-        adapter = AdapterTasks(root.context, tasks)
-        root.gridView.adapter = adapter
-        */
         return root
     }
 
     fun fillTasks(){
-        /*
-        tasks.add(Task("Practice 1", arrayListOf("Monday", "Sunday"), "17:30"))
-        tasks.add(Task("Practice 2", arrayListOf("Friday", "Saturday"), "12:30"))
-        tasks.add(Task("Practice 3", arrayListOf("Tuesday"), "20:40"))
-        tasks.add(Task("Practice 4", arrayListOf("Thursday"), "8:00"))
-        tasks.add(Task("Practice 5", arrayListOf("Wednesday"), "13:30"))
-        tasks.add(Task("Practice 6", arrayListOf("Monday"), "7:30"))
-        tasks.add(Task("Practice 7", arrayListOf("Sunday"), "11:00"))
-        tasks.add(Task("Practice 8", arrayListOf("Saturday"), "14:50"))
-         */
-
         storage.collection("actividades")
             .whereEqualTo("email", usuario.currentUser.email)
             .get()
@@ -103,8 +84,21 @@ class HomeFragment : Fragment() {
                     }
                     tasks!!.add(Task(it.getString("actividad")!!, dias, it.getString("tiempo")!!))
                 }
+                /*adapter = AdapterTasks(context!!, tasks)
+                gridView.adapter=adapter */
 
+            }.addOnFailureListener {
+                    Toast.makeText(context, "Error: try again", Toast.LENGTH_SHORT).show()
             }
+
+        tasks.add(Task("Practice 1", arrayListOf("Monday", "Sunday"), "17:30"))
+        tasks.add(Task("Practice 2", arrayListOf("Friday", "Saturday"), "12:30"))
+        tasks.add(Task("Practice 3", arrayListOf("Tuesday"), "20:40"))
+        tasks.add(Task("Practice 4", arrayListOf("Thursday"), "8:00"))
+        /*tasks.add(Task("Practice 5", arrayListOf("Wednesday"), "13:30"))
+        tasks.add(Task("Practice 6", arrayListOf("Monday"), "7:30"))
+        tasks.add(Task("Practice 7", arrayListOf("Sunday"), "11:00"))
+        tasks.add(Task("Practice 8", arrayListOf("Saturday"), "14:50"))*/
     }
 
 
