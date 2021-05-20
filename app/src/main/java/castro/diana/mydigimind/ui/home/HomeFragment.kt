@@ -44,7 +44,10 @@ class HomeFragment : Fragment() {
         storage = FirebaseFirestore.getInstance()
         usuario = FirebaseAuth.getInstance()
 
-        fillTasks()
+        if (first){
+            fillTasks()
+            first = false
+        }
 
         if(!tasks.isEmpty()){
             adapter = AdapterTasks(root.context, tasks)
@@ -82,7 +85,11 @@ class HomeFragment : Fragment() {
                     if (it.getBoolean("do") == true){
                         dias.add("Sunday")
                     }
-                    tasks!!.add(Task(it.getString("actividad")!!, dias, it.getString("tiempo")!!))
+                    var titulo = it.getString("actividad")
+                    var tiempo = it.getString("tiempo")
+
+                    var act = Task(titulo!!, dias, tiempo!!)
+                    tasks.add(act)
                 }
                 /*adapter = AdapterTasks(context!!, tasks)
                 gridView.adapter=adapter */
@@ -91,11 +98,11 @@ class HomeFragment : Fragment() {
                     Toast.makeText(context, "Error: try again", Toast.LENGTH_SHORT).show()
             }
 
-        tasks.add(Task("Practice 1", arrayListOf("Monday", "Sunday"), "17:30"))
+        /*tasks.add(Task("Practice 1", arrayListOf("Monday", "Sunday"), "17:30"))
         tasks.add(Task("Practice 2", arrayListOf("Friday", "Saturday"), "12:30"))
         tasks.add(Task("Practice 3", arrayListOf("Tuesday"), "20:40"))
         tasks.add(Task("Practice 4", arrayListOf("Thursday"), "8:00"))
-        /*tasks.add(Task("Practice 5", arrayListOf("Wednesday"), "13:30"))
+        tasks.add(Task("Practice 5", arrayListOf("Wednesday"), "13:30"))
         tasks.add(Task("Practice 6", arrayListOf("Monday"), "7:30"))
         tasks.add(Task("Practice 7", arrayListOf("Sunday"), "11:00"))
         tasks.add(Task("Practice 8", arrayListOf("Saturday"), "14:50"))*/
